@@ -1,0 +1,96 @@
+<div class="card" style="width: 18rem; width: 100vw; display: inline-flex; text-align: center; margin: 0; padding: 0;">
+
+    <div class="card-body">
+        <img src="../../../assets/foto.jpg" style="float: left; width: 50px;">
+        <h1>Piano</h1>
+    </div>
+
+</div>
+
+<br>
+
+<div class="row" style="height: 40vh;">
+    <div class="col-lg-4">
+        <div class="list-group">
+            <a href="#" (click)="sonidoPiano(1)" class="list-group-item list-group-item-action grid text-center" id="primero"> NOTA A</a>
+            <a href="#" (click)="sonidoPiano(2)" class="list-group-item list-group-item-action list-group-item grid text-center" style="background-color: red;"> NOTA B</a>
+            <a href="#" (click)="sonidoPiano(3)" class="list-group-item list-group-item-action list-group-item grid text-center" style="background-color: yellow;">NOTA C</a>
+            <a href="#" (click)="sonidoPiano(4)" class="list-group-item list-group-item-action list-group-item grid text-center" style="background-color: green;">NOTA D</a>
+            <a href="#" (click)="sonidoPiano(5)" class="list-group-item list-group-item-action list-group-item grid text-center" style="background-color: blue;">NOTA E</a>
+            <a href="#" (click)="sonidoPiano(6)" class="list-group-item list-group-item-action list-group-item grid text-center" style="background-color: purple;"> NOTA F</a>
+            <a href="#" (click)="sonidoPiano(7)" class="list-group-item list-group-item-action list-group-item grid text-center" style="background-color: cyan;">NOTA G</a>
+        </div>
+
+    </div>
+</div>
+
+<div class="card" style="width: 18rem; width: 100vw; display: inline-flex; text-align: center; margin: 0; padding: 0;">
+
+    <div class="card-body">
+        <h1>Piano Personalizado</h1>
+    </div>
+
+</div>
+
+<div class="row" style="height: 40vh; margin: 0 auto;">
+    <div class="col-lg-4">
+        <img src="../../../assets/foto2.jpg" style="float: left; width: 130px; position: absolute; left: 50px;">
+        <ul class="set" style="margin: 0 auto;">
+        <li (click)="sonidoPiano2(1)" class="white b" style="margin-left: 30px;"></li>
+        <li (click)="sonidoPiano2(2)" class="black as"></li>
+        <li (click)="sonidoPiano2(3)" class="white a"></li>
+        <li (click)="sonidoPiano2(4)" class="black gs"></li>
+        <li (click)="sonidoPiano2(5)" class="white g"></li>
+        <li (click)="sonidoPiano2(6)" class="black fs"></li>
+        <li (click)="sonidoPiano2(7)" class="white f"></li>
+        <li (click)="sonidoPiano2(8)" class="white e"></li>
+            <li (click)="sonidoPiano2(9)" class="black ds"></li>
+            <li (click)="sonidoPiano2(10)" class="white d"></li>
+    </ul>
+
+    </div>
+         
+</div>
+
+<br>
+
+<div class="container">
+    <h1>Lista de productos</h1>
+    <div class="row" style="border: 1px solid red; width: 50vw; float: right; height: 3rem;">
+        <button class="btn btn-primary ml-auto" (click)="mostrar()">Mostrar Tabla</button>
+
+        
+        
+        
+        
+    </div>
+
+    <div class="row" style="border: 1px solid red; width: 50vw; float: right; height: 3rem;">
+        <button class="btn btn-secondary ml auto" (click)="ocultar()" style="background-color: red;">Ocultar Tabla</button>
+
+    </div>
+
+    <div class="row" style="border: 1px solid red; width: 50vw; float: right; height: 3rem;">
+        <button class="btn btn-secondary ml auto" (click)="mostrarOcultar()" style="background-color: green;">Las dos</button>
+
+
+    </div>
+    <br>
+    <table class="table" *ngIf="estado">
+        <thead>
+            <th># num</th>
+            <th>Dos dos</th>
+            <th>Productos</th>
+            <th>Tienda</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of listaProductos; let i = index">
+                <td>{{i+1}}</td>
+                <td>{{(i+1)*2}}</td>
+                <td>{{item.producto}}</td>
+                <td>{{item.tienda}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <h3 *ngIf="listaProductos.length === 0">No hay datos en la tabla</h3>
+</div>

@@ -1,0 +1,135 @@
+<div class="principal" style="width: 100vw; height: 100vh;">
+    <div class="rowBotones">
+        <h1 class="title">Usuarios</h1>
+        <nav class="nav nav-pills nav-fill">
+            <a class="nav-link btnNav" id="btnRegistrar" (click)="activarBoton(0)" href="#">Registrar Usuario</a>
+            <a class="nav-link btnNav" id="btnBuscar" (click)="activarBoton(1)" href="#">Buscar Usuario</a>
+            <a class="nav-link btnNav" id="btnModificar" (click)="activarBoton(2)" href="#">Modificar Usuario</a>
+            <a class="nav-link btnNav" id="btnEliminar" (click)="activarBoton(3)" href="#">Eliminar Usuario</a>
+          </nav>
+    </div>
+
+    <div class="row registrar" *ngIf="estados[0]">
+        <div class="rowRegistrar--item">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Nombre del Usuario</span>
+                <input type="text" class="form-control registro soloTexto" id="Nombre" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)] = "datosUsuario.nombre">
+            </div>
+    
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Contraseña</span>
+                <input type="password" class="form-control registro input" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)] = "datosUsuario.password">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Edad</span>
+                <input type="number" class="form-control registro soloNumero" id="Edad" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)] = "datosUsuario.edad">
+            </div>
+
+        </div>
+
+        <div class="rowRegistrar--item">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Apellidos</span>
+                <input type="text" class="form-control registro soloTexto" id="Apellidos" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)] = "datosUsuario.apellidos">
+            </div>
+    
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Rol</span>
+                <input type="text" class="form-control registro soloTexto" id="Rol" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)] = "datosUsuario.role">
+            </div>        
+        </div>
+        <button class="btn btn-primary" id="action" (click)="registrarUsuario()">Registrar</button>  
+          
+    </div>
+    
+
+
+
+    <div class="row buscar" *ngIf="estados[1]">
+
+        <div class="rowRegistrar--item">
+            <button class="btn btn-primary" id="action--buscar" (click)="mostrarUsuario()">Buscar</button>    
+        </div>
+        
+        <div>
+            <table class="table table-dark table-striped">
+                <thead class="table-ligth">
+                    <th style="color: #000; text-align: center;">ID de usuario</th>
+                    <th style="color: #000; text-align: center;">Nombre</th>
+                    <th style="color: #000; text-align: center;">Apellidos</th>
+                    <th style="color: #000; text-align: center;">Rol</th>
+                    <th style="color: #000; text-align: center;">Eliminar</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of data; let i=index">
+                        <td style="text-align: center;" class="td-id">{{item._id}}</td>
+                        <td style="text-align: center;">{{item.nombre}}</td>
+                        <td style="text-align: center;">{{item.apellidos}}</td>
+                        <td style="text-align: center;">{{item.role}}</td>
+                        <td style="text-align: center;"><button type="button" class="btn btn-danger" (click)="eliminarUsuarioBuscar(item._id)">Eliminar</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+
+    <div class="row modificar" *ngIf="estados[2]">
+        <div class="rowRegistrar--item">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">🔎</span>
+                <input type="text" class="form-control" placeholder="ID del usuario" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)] = "idUsuario">
+            </div>
+        </div>
+
+        <div class="rowRegistrar--item">
+            <button class="btn btn-primary" id="action--buscar" (click)="buscarUsuario()">Buscar</button>    
+        </div>
+
+        <div class="rowRegistrar--item">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Nombre</span>
+                <input type="text" id="Nombre" class="form-control modificar soloTexto" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)] = "datosUsuario.nombre">
+            </div>
+    
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Contraseña</span>
+                <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)] = "datosUsuario.password">
+            </div>  
+            
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Edad</span>
+                <input type="number" id="Edad" class="form-control modificar soloNumero" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)] = "datosUsuario.edad">
+            </div>
+        </div>
+        
+        <div class="rowRegistrar--item">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Apellidos</span>
+                <input type="text" id="Apellidos" class="form-control modificar soloTexto" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)] = "datosUsuario.apellidos">
+            </div>
+    
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Rol</span>
+                <input type="text" id="Rol" class="form-control modificar soloTexto" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)] = "datosUsuario.role">
+            </div>   
+        </div>
+        <button class="btn btn-primary" id="action" (click)="actualizarUsuario()">Actualizar</button>          
+    </div>
+
+    <div class="row eliminar" *ngIf="estados[3]">
+        <div class="rowRegistrar--item">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">🔎</span>
+                <input type="text" class="form-control" placeholder="ID del usuario" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+        </div>
+
+        <div class="rowRegistrar--item">
+            <button class="btn btn-primary" id="action--eliminar">Eliminar</button>    
+        </div>
+        
+    </div>
+</div>

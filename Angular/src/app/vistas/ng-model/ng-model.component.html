@@ -1,0 +1,11 @@
+<div class="row" style="width: 100%; border: 1px solid red; text-align: center;">
+    <h1>Práctica ngModel</h1>
+    
+    <input type="text" placeholder="Texto Prueba" id="" form="form" style="font-size: 25px;" [(ngModel)] = "prueba">
+    <form action="">
+        <input type="submit" value="Enviar" (click)="mostrarMensaje()" id="form">
+    </form>
+    <p>
+        Prueba de ngModel: {{prueba}}
+    </p>
+</div>
